@@ -23,7 +23,7 @@ class ChatbotController extends Controller
         } elseif (str_contains($message, 'project')) {
             $reply = "I have worked on various projects including this portfolio, e-commerce platforms, and management systems. Check out the Projects section!";
         } elseif (str_contains($message, 'contact') || str_contains($message, 'email')) {
-            $reply = "You can reach me via the contact form below or email me directly at hello@example.com.";
+            $reply = "You can reach me via the contact form below or email me directly at denis@example.com.";
         } else {
             $reply = "Thanks for reaching out! I'm an AI assistant here to help you learn more about my creator. Ask me about skills, projects, or experience.";
         }

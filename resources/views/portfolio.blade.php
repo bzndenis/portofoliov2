@@ -13,10 +13,10 @@
 
     <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <h2 class="text-xl md:text-2xl font-medium text-indigo-600 dark:text-indigo-400 mb-4 animate-fade-in-up">
-            Hello, I'm <span class="font-bold">Alex Developer</span>
+            Hello, I'm <span class="font-bold">Denis Akbar</span>
         </h2>
         <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6 animate-fade-in-up animation-delay-200">
-            Backend & <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Laravel</span> Developer
+            Backend <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Developer</span>
         </h1>
         <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-300 mb-10 animate-fade-in-up animation-delay-400">
             Building robust, scalable web applications with modern technologies. Passionate about clean code and elegant solutions.
@@ -369,7 +369,7 @@
             <!-- Welcome Message -->
             <div class="flex justify-start">
                 <div class="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-lg rounded-tl-none py-2 px-4 shadow-sm max-w-[85%] border border-gray-200 dark:border-gray-700">
-                    <p class="text-sm">Hi there! I'm an AI assistant. Ask me about Alex's skills, projects, or how to get in touch.</p>
+                    <p class="text-sm">Hi there! I'm an AI assistant. Ask me about Denis' skills, projects, or how to get in touch.</p>
                 </div>
             </div>
 
