@@ -151,7 +151,113 @@
 </section>
 
 <!-- Projects Section -->
-<section id="projects" class="py-20 bg-white dark:bg-gray-900">
+<section id="projects" class="py-20 bg-white dark:bg-gray-900" x-data="{
+    currentPage: 1,
+    itemsPerPage: 8,
+    projects: [
+        {
+            title: 'E-Commerce API',
+            description: 'A robust RESTful API for a multi-vendor e-commerce platform featuring cart management, payment gateway integration, and order processing.',
+            tags: ['Laravel 11', 'MySQL', 'Redis'],
+            color: 'from-blue-400 to-indigo-500',
+            icon: '🛍️'
+        },
+        {
+            title: 'Task Manager',
+            description: 'A collaborative task management tool with real-time updates, team workspaces, and progress tracking.',
+            tags: ['Vue.js', 'Laravel', 'WebSockets'],
+            color: 'from-green-400 to-teal-500',
+            icon: '✅'
+        },
+        {
+            title: 'SaaS Dashboard',
+            description: 'Analytics dashboard for SaaS applications, visualizing user growth, revenue, and churn rates with interactive charts.',
+            tags: ['Livewire', 'Alpine.js', 'Chart.js'],
+            color: 'from-orange-400 to-red-500',
+            icon: '📊'
+        },
+        {
+            title: 'Fitness Tracker',
+            description: 'A cross-platform mobile application for tracking workouts and nutrition. Syncs data with Apple Health and Google Fit.',
+            tags: ['React Native', 'Laravel API'],
+            color: 'from-purple-600 to-pink-600',
+            icon: '💪'
+        },
+        {
+            title: 'Cloud Infrastructure',
+            description: 'Automated infrastructure provisioning using Terraform and Ansible. Sets up a highly available Kubernetes cluster on AWS.',
+            tags: ['AWS', 'Docker', 'Terraform'],
+            color: 'from-cyan-500 to-blue-600',
+            icon: '☁️'
+        },
+        {
+            title: 'Social Media Bot',
+            description: 'An intelligent bot that automates social media interactions, content scheduling, and analytics reporting.',
+            tags: ['Python', 'Selenium', 'OpenAI API'],
+            color: 'from-pink-500 to-rose-500',
+            icon: '🤖'
+        },
+        {
+            title: 'LMS Platform',
+            description: 'A comprehensive Learning Management System with course creation, student progress tracking, and quiz modules.',
+            tags: ['Laravel', 'Vue.js', 'PostgreSQL'],
+            color: 'from-yellow-400 to-orange-500',
+            icon: '🎓'
+        },
+        {
+            title: 'Real-time Chat',
+            description: 'A scalable chat application supporting private messaging, group chats, and file sharing with end-to-end encryption.',
+            tags: ['Node.js', 'Socket.io', 'MongoDB'],
+            color: 'from-indigo-500 to-purple-600',
+            icon: '💬'
+        },
+        {
+            title: 'Inventory System',
+            description: 'Warehouse inventory management system with barcode scanning, stock alerts, and supplier management.',
+            tags: ['Laravel', 'Livewire', 'Tailwind'],
+            color: 'from-teal-400 to-emerald-600',
+            icon: '📦'
+        },
+        {
+            title: 'Booking Engine',
+            description: 'Appointment booking system for clinics and salons with calendar integration and SMS notifications.',
+            tags: ['PHP', 'MySQL', 'Twilio'],
+            color: 'from-blue-500 to-cyan-500',
+            icon: '📅'
+        },
+        {
+            title: 'Crypto Tracker',
+            description: 'Real-time cryptocurrency portfolio tracker with price alerts and historical data analysis.',
+            tags: ['React', 'Node.js', 'CoinGecko API'],
+            color: 'from-violet-500 to-fuchsia-600',
+            icon: '💰'
+        },
+        {
+            title: 'Weather App',
+            description: 'Location-based weather forecast application with severe weather alerts and interactive maps.',
+            tags: ['JavaScript', 'OpenWeatherMap', 'Leaflet'],
+            color: 'from-sky-400 to-blue-500',
+            icon: '🌤️'
+        }
+    ],
+    get totalPages() {
+        return Math.ceil(this.projects.length / this.itemsPerPage);
+    },
+    get paginatedProjects() {
+        const start = (this.currentPage - 1) * this.itemsPerPage;
+        const end = start + this.itemsPerPage;
+        return this.projects.slice(start, end);
+    },
+    nextPage() {
+        if (this.currentPage < this.totalPages) this.currentPage++;
+    },
+    prevPage() {
+        if (this.currentPage > 1) this.currentPage--;
+    },
+    goToPage(page) {
+        this.currentPage = page;
+    }
+}">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
@@ -162,83 +268,72 @@
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Project Card 1 -->
-            <div class="group relative bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                <div class="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 overflow-hidden">
-                     <!-- Placeholder Project Image -->
-                     <div class="w-full h-48 bg-gradient-to-br from-blue-400 to-indigo-500 group-hover:scale-110 transition-transform duration-500"></div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">E-Commerce API</h3>
-                    <p class="text-gray-500 dark:text-gray-400 mb-4 line-clamp-3">
-                        A robust RESTful API for a multi-vendor e-commerce platform featuring cart management, payment gateway integration, and order processing.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="text-xs font-semibold px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded">Laravel</span>
-                        <span class="text-xs font-semibold px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded">MySQL</span>
-                        <span class="text-xs font-semibold px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded">Redis</span>
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <template x-for="project in paginatedProjects" :key="project.title">
+                <div class="group relative bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-gray-700 flex flex-col h-full">
+                    <!-- Image Area -->
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 overflow-hidden relative">
+                        <div :class="`w-full h-48 bg-gradient-to-br ${project.color} group-hover:scale-105 transition-transform duration-500`"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-4xl filter drop-shadow-lg transform group-hover:scale-110 transition-transform duration-300" x-text="project.icon"></span>
+                        </div>
                     </div>
-                    <div class="flex justify-between items-center">
-                        <a href="#" class="text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">View Code &rarr;</a>
-                        <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors">Live Demo</a>
+                    
+                    <!-- Content -->
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors" x-text="project.title"></h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 line-clamp-3 flex-1" x-text="project.description"></p>
+                        
+                        <!-- Tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <template x-for="tag in project.tags">
+                                <span class="text-xs font-semibold px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded" x-text="tag"></span>
+                            </template>
+                        </div>
+                        
+                        <!-- Actions -->
+                        <div class="flex justify-between items-center mt-auto pt-4 border-t border-gray-100 dark:border-gray-700">
+                            <a href="#" class="text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors flex items-center gap-1">
+                                View Code 
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                            </a>
+                            <a href="#" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors flex items-center gap-1">
+                                Live Demo
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <!-- Overlay on Hover -->
-                <div class="absolute inset-0 bg-indigo-900/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <p class="text-white font-bold text-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">View Details</p>
-                </div>
+            </template>
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="flex justify-center items-center gap-4 mt-16" x-show="totalPages > 1">
+            <!-- Previous Button -->
+            <button @click="prevPage" :disabled="currentPage === 1" 
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <span class="sr-only">Previous</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            
+            <!-- Page Numbers -->
+            <div class="flex items-center gap-2">
+                <template x-for="page in totalPages" :key="page">
+                    <button @click="goToPage(page)" 
+                            :class="currentPage === page ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700'"
+                            class="w-10 h-10 flex items-center justify-center rounded-full border text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            x-text="page">
+                    </button>
+                </template>
             </div>
 
-            <!-- Project Card 2 -->
-            <div class="group relative bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                <div class="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 overflow-hidden">
-                     <div class="w-full h-48 bg-gradient-to-br from-green-400 to-teal-500 group-hover:scale-110 transition-transform duration-500"></div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Task Manager</h3>
-                    <p class="text-gray-500 dark:text-gray-400 mb-4 line-clamp-3">
-                        A collaborative task management tool with real-time updates, team workspaces, and progress tracking.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="text-xs font-semibold px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded">Vue.js</span>
-                        <span class="text-xs font-semibold px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded">Laravel</span>
-                        <span class="text-xs font-semibold px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded">WebSockets</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <a href="#" class="text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">View Code &rarr;</a>
-                        <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors">Live Demo</a>
-                    </div>
-                </div>
-                 <div class="absolute inset-0 bg-indigo-900/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <p class="text-white font-bold text-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">View Details</p>
-                </div>
-            </div>
-
-            <!-- Project Card 3 -->
-            <div class="group relative bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                <div class="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 overflow-hidden">
-                     <div class="w-full h-48 bg-gradient-to-br from-orange-400 to-red-500 group-hover:scale-110 transition-transform duration-500"></div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">SaaS Dashboard</h3>
-                    <p class="text-gray-500 dark:text-gray-400 mb-4 line-clamp-3">
-                        Analytics dashboard for SaaS applications, visualizing user growth, revenue, and churn rates with interactive charts.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="text-xs font-semibold px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded">Livewire</span>
-                        <span class="text-xs font-semibold px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded">Alpine.js</span>
-                        <span class="text-xs font-semibold px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded">Chart.js</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <a href="#" class="text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">View Code &rarr;</a>
-                        <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors">Live Demo</a>
-                    </div>
-                </div>
-                 <div class="absolute inset-0 bg-indigo-900/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <p class="text-white font-bold text-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">View Details</p>
-                </div>
-            </div>
+            <!-- Next Button -->
+            <button @click="nextPage" :disabled="currentPage === totalPages"
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <span class="sr-only">Next</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
         </div>
     </div>
 </section>
